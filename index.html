@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Академия кино и телевизионных искусств «Премьера-М»</title>
+<meta name="description" content="Обучение и продюсирование детей и подростков: съёмки в кинофильмах вместе со звёздами, музыкальные клипы, авторские песни. Запишитесь на онлайн-кастинг.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12131a; --ink-2:#4a4d5c; --line:#e3e4ea; --bg:#ffffff; --bg-2:#f3f4f8;
+  --accent:#2f45ff; --accent-ink:#ffffff; --accent-dark:#1f2fd0;
+  --radius:14px; --wrap:1200px; --gut:clamp(16px,4vw,40px);
+  --display:'Unbounded',system-ui,sans-serif; --body:'Manrope',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(28px,4vw,48px);margin-bottom:20px}
+h3{font-size:20px;letter-spacing:-.01em}
+p{max-width:68ch}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--ink-2)}
+section{padding:clamp(72px,10vw,128px) 0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--body);padding:18px 28px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s,transform .2s,border-color .2s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:var(--accent-dark)}
+.btn-ghost{border-color:currentColor;color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--ink)}
+.btn svg{width:18px;height:18px}
+
+/* header */
+.top{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s,box-shadow .3s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.brand{font:700 15px/1.2 var(--display);color:#fff;text-decoration:none;letter-spacing:-.01em}
+.brand small{display:block;font:500 12px/1.3 var(--body);opacity:.75;letter-spacing:0}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{color:#fff;text-decoration:none;font-weight:600;font-size:15px;opacity:.85}
+.nav a:hover{opacity:1}
+.nav .btn{padding:12px 20px;font-size:15px;opacity:1}
+.top.solid{background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--line)}
+.top.solid .brand,.top.solid .nav a:not(.btn){color:var(--ink)}
+@media(max-width:860px){.nav a:not(.btn){display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:#0b0c12;overflow:hidden;padding:0}
+.hero-media{position:absolute;inset:0;pointer-events:none}
+.hero-media img,.hero-media iframe{position:absolute;top:50%;left:50%;width:max(100%,177.78svh);height:max(100%,56.25vw);transform:translate(-50%,-50%);object-fit:cover;border:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,12,18,.55) 0%,rgba(11,12,18,.6) 40%,rgba(11,12,18,.92) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-bottom:clamp(48px,8vw,96px);padding-top:120px;width:100%}
+.hero h1{font-size:clamp(34px,6.2vw,84px);max-width:16ch;margin-bottom:24px}
+.hero p{font-size:clamp(18px,1.8vw,22px);max-width:46ch;opacity:.9;margin-bottom:36px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px}
+
+/* participants */
+.cast-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:48px}
+.cast-head p{max-width:52ch}
+.cast{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 24px;list-style:none}
+.cast li:nth-child(1),.cast li:nth-child(2){grid-column:span 2}
+.cast li:nth-child(1) figure,.cast li:nth-child(2) figure{aspect-ratio:16/11}
+.cast figure{aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius);background:var(--bg-2);margin-bottom:16px}
+.cast img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.cast li:hover img{transform:scale(1.04)}
+.cast h3{margin-bottom:6px}
+.cast p{font-size:15px;color:var(--ink-2);line-height:1.5}
+@media(max-width:980px){.cast{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cast{grid-template-columns:1fr}.cast li:nth-child(1),.cast li:nth-child(2){grid-column:auto}}
+
+/* about */
+.about{background:var(--bg-2)}
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.split img{border-radius:var(--radius);width:100%;aspect-ratio:3/2;object-fit:cover}
+.split p+p{margin-top:16px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(56px,7vw,88px);padding-top:40px;border-top:1px solid var(--line)}
+.facts h3{margin-bottom:10px}
+.facts p{color:var(--ink-2);font-size:16px}
+@media(max-width:860px){.split,.facts{grid-template-columns:1fr}}
+
+/* director */
+.director .split{grid-template-columns:1fr 1.2fr}
+.director img{aspect-ratio:4/3}
+.director .role{font-weight:600;color:var(--accent);margin-bottom:24px}
+.director figcaption{font-size:14px;color:var(--ink-2);margin-top:12px}
+.stats{display:grid;grid-template-columns:repeat(4,auto);gap:20px 32px;margin:32px 0;justify-content:start}
+.stats b{display:block;font:700 clamp(28px,3vw,40px)/1 var(--display);color:var(--accent)}
+.stats span{font-size:14px;color:var(--ink-2)}
+@media(max-width:860px){.director .split{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,auto)}}
+
+/* gallery */
+.gallery{padding-top:0}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:12px}
+.strip img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.strip img:first-child{grid-row:span 2;grid-column:span 2}
+@media(max-width:700px){.strip{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}}
+
+/* casting */
+.casting{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.casting .split{grid-template-columns:1fr 1fr;align-items:start}
+.casting .lead{color:#c6c8d6}
+.casting ul.perks{list-style:none;margin-top:28px;display:grid;gap:12px}
+.casting ul.perks li{display:flex;gap:12px;align-items:flex-start;color:#e4e5ee}
+.casting ul.perks svg{flex:none;width:22px;height:22px;color:#8f9bff;margin-top:2px}
+form{background:#fff;color:var(--ink);border-radius:20px;padding:clamp(24px,4vw,40px);display:grid;gap:18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+form h3{font-size:22px}
+label{display:grid;gap:8px;font-weight:600;font-size:15px}
+input{font:500 17px var(--body);padding:15px 16px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);caret-color:var(--accent);transition:border-color .2s}
+input:hover{border-color:#c4c7d4}
+input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(47,69,255,.15)}
+form .btn{justify-content:center;width:100%}
+form small{color:var(--ink-2);font-size:13px}
+@media(max-width:860px){.casting .split{grid-template-columns:1fr}}
+
+/* contacts */
+.contacts .grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+.contacts h3{font-size:16px;font-family:var(--body);font-weight:700;margin-bottom:14px;letter-spacing:0}
+.contacts a{text-decoration:none}
+.contacts a:hover{color:var(--accent)}
+.big-link{font:700 clamp(20px,2.2vw,28px)/1.3 var(--display);display:block;margin-bottom:6px;letter-spacing:-.01em}
+.docs{list-style:none;display:grid;gap:10px}
+.docs a{display:flex;gap:10px;align-items:flex-start;font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line)}
+.docs svg{flex:none;width:18px;height:18px;margin-top:4px;color:var(--accent)}
+.social{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.social a{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:border-color .2s,color .2s}
+.social a:hover{border-color:var(--accent)}
+.social svg{width:20px;height:20px}
+@media(max-width:860px){.contacts .grid{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:32px 0 40px;font-size:14px;color:var(--ink-2)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer p{max-width:60ch}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#">Премьера-М<small>Академия кино и ТВ искусств</small></a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#cast">Участники</a>
+      <a href="#about">О проекте</a>
+      <a href="#contacts">Контакты</a>
+      <a class="btn btn-primary" href="#casting">На кастинг</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <img src="assets/9382fd43_IMG_20231020_083535_.jpg" alt="">
+  </div>
+  <div class="wrap">
+    <h1>Академия кино и&nbsp;телевизионных искусств «Премьера-М»</h1>
+    <p>Выявляем и развиваем творческие способности детей и помогаем им реализовать свои таланты — в настоящем кино, вместе со звёздами.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#casting">Записаться на онлайн-кастинг
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#contacts">Купить билет</a>
+    </div>
+  </div>
+</section>
+
+<section id="cast">
+  <div class="wrap">
+    <div class="cast-head">
+      <h2>Участники наших кинопроектов</h2>
+      <p class="lead">Вместе с учениками академии в наших фильмах снимаются звёзды федеральных телешоу.</p>
+    </div>
+    <ul class="cast">
+      <li><figure><img src="assets/9fdcbf4d_maxresdefault.jpg" alt="Лиза Сметанникова" loading="lazy"></figure><h3>Лиза Сметанникова</h3><p>Полуфиналистка шоу «Голос. Дети-7», финалистка Детского Евровидения 2018&nbsp;г.</p></li>
+      <li><figure><img src="assets/972d0483_maxresdefault_1.jpg" alt="Таисия Скоморохова" loading="lazy"></figure><h3>Таисия Скоморохова</h3><p>Полуфиналистка шоу «Голос. Дети-7», актриса, телеведущая на канале СТС</p></li>
+      <li><figure><img src="assets/f8e9b059_noroot.jpg" alt="Дарья Львова" loading="lazy"></figure><h3>Дарья Львова</h3><p>Героиня международного благотворительного проекта «Нас — миллионы!», певица</p></li>
+      <li><figure><img src="assets/3bfc54bb_noroot.jpg" alt="Злата Гарифуллина" loading="lazy"></figure><h3>Злата Гарифуллина</h3><p>Победитель «Уфимской волны», певица, актриса, телеведущая, модель</p></li>
+      <li><figure><img src="assets/7530ac84_noroot.jpg" alt="Денберел Ооржак" loading="lazy"></figure><h3>Денберел Ооржак</h3><p>Двукратный победитель шоу «Ты — супер!» на НТВ, победитель «Новой волны», участник Детского Евровидения, певец, актёр</p></li>
+      <li><figure><img src="assets/7e515a8a_noroot.jpg" alt="Алеся Мусорина" loading="lazy"></figure><h3>Алеся Мусорина</h3><p>Актриса, певица, модель</p></li>
+      <li><figure><img src="assets/ef341ac6_WhatsApp_Image_2023-.jpeg" alt="Кристиан Азаров" loading="lazy"></figure><h3>Кристиан Азаров</h3><p>Участник шоу «Голос. Дети-5, 6», певец, актёр, победитель фестиваля «Сан-Ремо-2020» (Италия)</p></li>
+      <li><figure><img src="assets/73b3ba2b_WhatsApp_Image_2023-.jpeg" alt="Софья Туманова" loading="lazy"></figure><h3>Софья Туманова</h3><p>Суперфиналистка шоу «Голос. Дети-7»</p></li>
+      <li><figure><img src="assets/20e2d96c_23.png" alt="Артем Фокин" loading="lazy"></figure><h3>Артем Фокин</h3><p>Суперфиналист «Голос. Дети-7» и шоу-проекта Крыма «ТаланТы», финалист национального отбора «Детское Евровидение-2020»</p></li>
+      <li><figure><img src="assets/bfe4862a_WhatsApp_Image_2023-.jpeg" alt="Кристина Католикова и Ярослав Семенов" loading="lazy"></figure><h3>Кристина Католикова и&nbsp;Ярослав Семенов</h3><p>Танцевальный дуэт «Energy kids»</p></li>
+      <li><figure><img src="assets/d4281a45__.jpg" alt="Иван Наумов" loading="lazy"></figure><h3>Иван Наумов</h3><p>Музыкант группы «Ricky Loud Band»</p></li>
+      <li><figure><img src="assets/7c468ccb_noroot.jpg" alt="Ярослав Ефременко" loading="lazy"></figure><h3>Ярослав Ефременко</h3><p>Актёр театра и кино</p></li>
+      <li><figure><img src="assets/669b751d_587522_big_091c1e35c.jpg" alt="Дарья Киселева" loading="lazy"></figure><h3>Дарья Киселева</h3><p>Театр-студия «Непоседы», участница шоу «Голос. Дети»</p></li>
+      <li><figure><img src="assets/a0a7b709_maxresdefault_4.jpg" alt="Давид Хиникадзе" loading="lazy"></figure><h3>Давид Хиникадзе</h3><p>Театр-студия «Непоседы», участник шоу «Голос. Дети»</p></li>
+      <li><figure><img src="assets/3b02bb49_noroot.jpg" alt="Антон Субботин" loading="lazy"></figure><h3>Антон Субботин</h3><p>Участник шоу «Голос. Дети-5»</p></li>
+      <li><figure><img src="assets/deda0f06_WhatsApp_Image_2023-.jpeg" alt="Ангелина Лопес" loading="lazy"></figure><h3>Ангелина Лопес</h3><p>Модель, актриса</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="split">
+      <img src="assets/9382fd43_IMG_20231020_083535_.jpg" alt="На съёмках академии «Премьера-М»" loading="lazy">
+      <div>
+        <h2>О проекте</h2>
+        <p class="lead">Академия «Премьера-М» занимается обучением и продюсированием детей и подростков: производит кинофильмы, музыкальные видеоклипы и видеоролики, создаёт авторские музыкальные композиции и проводит кинопоказы.</p>
+        <p>Почти каждый человек когда-либо мечтал сниматься в кино. Мы помогаем реализовать мечту через участие в наших кинопроектах. В них мы снимаем самых разных талантливых детей и подростков — и начинающих свой творческий путь, и добившихся народного признания в известных телешоу на федеральных каналах. Вместе с ними в кино снимаются ученики академии.</p>
+        <p>Наши кинофильмы — победители и лауреаты международных кинофестивалей. У каждого есть шанс сняться со звёздами кино и музыки в одном фильме, перенять их бесценный опыт и реализовать свой талант. Мы работаем не только с детьми, но и со взрослыми: возрастных ограничений нет.</p>
+      </div>
+    </div>
+    <div class="facts">
+      <div><h3>Кастинги</h3><p>Любой талантливый ребёнок или взрослый имеет шанс сняться в кинофильме со знаменитостью.</p></div>
+      <div><h3>Съёмки в кино</h3><p>Съёмки проходят на любой территории мира в соответствии со сценариями.</p></div>
+      <div><h3>Приобретённый опыт</h3><p>Участники получают бесценный опыт съёмок со знаменитостями. Участники с вокальными данными получают в подарок авторскую песню с правом исполнения на любых музыкальных площадках.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="director">
+  <div class="wrap">
+    <div class="split">
+      <figure>
+        <img src="assets/115671f5_noroot.jpg" alt="Милана Мусаева с киноведом Александром Семенюком и участницей кинофестиваля «Золотой витязь» Ольгой" loading="lazy">
+        <figcaption>С киноведом Александром Семенюком и участницей кинофестиваля «Золотой витязь» Ольгой.</figcaption>
+      </figure>
+      <div>
+        <h2>Милана Мусаева</h2>
+        <p class="role">Руководитель проекта, директор академии «Премьера-М»</p>
+        <p class="lead">Кинорежиссёр, сценарист, поэт, композитор, продюсер, педагог. Член Союза кинематографистов России.</p>
+        <div class="stats">
+          <div><b>50+</b><span>сценариев</span></div>
+          <div><b>14</b><span>кинофильмов</span></div>
+          <div><b>7</b><span>видеоклипов</span></div>
+          <div><b>30</b><span>авторских песен</span></div>
+        </div>
+        <p>С детства мечтала стать кинорежиссёром, занималась музыкой (фортепиано) под руководством педагога. В 90-е снимала на видеокамеру школьные мероприятия, писала сценарии, стихи, рассказы, ставила художественные спектакли, создавала музыкальные клипы и записывала авторские композиции. В 1992 году окончила среднюю школу №&nbsp;18 г.&nbsp;Грозного с золотой медалью; имеет высшее образование (ЧГУ, г.&nbsp;Грозный) и неоконченное второе высшее (ГУУ, г.&nbsp;Москва).</p>
+        <p>Директор АНО ПО «Академия кино и телевизионных искусств „Премьера-М“», главный специалист Министерства финансов ЧР и председатель его Совета молодёжи. Имеет награды международных и российских кинофестивалей, а также региональных ведомств: Общественной палаты ЧР, Межрегиональной ассоциации общественных объединений «Национальный совет молодёжных и детских объединений» и др.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" aria-label="Мы гордимся нашими учениками">
+  <div class="wrap">
+    <h2>Мы гордимся нашими учениками</h2>
+    <div class="strip">
+      <img src="assets/f3789950_photo_53009262343535.jpg" alt="Ученики академии" loading="lazy">
+      <img src="assets/48148344_photo_53009262343535.jpg" alt="Ученики академии" loading="lazy">
+      <img src="assets/9e30513b_photo_53009262343535.jpg" alt="Ученики академии" loading="lazy">
+      <img src="assets/d9eaf9c2_photo_53009262343535.jpg" alt="Ученики академии" loading="lazy">
+      <img src="assets/81f02e18_photo_53009262343535.jpg" alt="Ученики академии" loading="lazy">
+      <img src="assets/cb01a697_photo_53009262343535.jpg" alt="Ученики академии" loading="lazy">
+      <img src="assets/698ac5c6_photo_53009262343535.jpg" alt="Ученики академии" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="casting" id="casting">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h2>Записаться на онлайн-кастинг</h2>
+        <p class="lead">Оставьте контакты — мы свяжемся с вами и расскажем, как пройти кастинг и попасть в ближайший кинопроект.</p>
+        <ul class="perks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Без возрастных ограничений — для детей и взрослых</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Съёмки в одном фильме со звёздами кино и музыки</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Авторская песня в подарок участникам с вокальными данными</li>
+        </ul>
+      </div>
+      <form action="mailto:filmschool18@yandex.ru?subject=Заявка на онлайн-кастинг" method="post" enctype="text/plain">
+        <h3>Заявка на кастинг</h3>
+        <label>Имя<input type="text" name="Имя" autocomplete="name" required></label>
+        <label>Телефон<input type="tel" name="Телефон" autocomplete="tel" placeholder="+7" required></label>
+        <label>E-mail<input type="email" name="Email" autocomplete="email" required></label>
+        <button class="btn btn-primary" type="submit">Отправить заявку</button>
+        <small>Отправляя заявку, вы соглашаетесь на обработку персональных данных.</small>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="contacts" id="contacts">
+  <div class="wrap">
+    <h2>Наши контакты</h2>
+    <p class="lead" style="margin-bottom:48px">Следите за нами в Instagram и на YouTube.</p>
+    <div class="grid">
+      <div>
+        <h3>г. Грозный</h3>
+        <a class="big-link" href="tel:+79993999255">+7 999 399-92-55</a>
+        <a class="big-link" href="mailto:filmschool18@yandex.ru">filmschool18@yandex.ru</a>
+        <div class="social">
+          <a href="https://t.me/MilaMishelle" aria-label="Telegram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 4 3 11l6 2.5L18 7l-7 8 7 5z"/></svg></a>
+          <a href="https://wa.me/79640618010" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3 3z"/><path d="M9 9.5c.5 2 2.5 4.5 5 5l1.5-1.5 2 1-.5 1.5c-3 .5-8-3.5-8.5-7.5L10 7l1 2z"/></svg></a>
+          <a href="https://www.youtube.com/channel/UCLl7ej5_SfUFBcis3X8TGyw" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a>
+          <a href="https://www.instagram.com/filmschool18/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Документы</h3>
+        <ul class="docs">
+          <li><a href="https://disk.yandex.ru/i/dXrSmKHxhZAcAA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/></svg>Документы</a></li>
+          <li><a href="https://disk.yandex.ru/i/YqBjQhApBvf9Wg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/></svg>Программа профессиональной переподготовки для взрослых</a></li>
+          <li><a href="https://disk.yandex.ru/i/0qvN4du8qt1Usw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/></svg>Программа дополнительного образования для детей и взрослых</a></li>
+          <li><a href="https://disk.yandex.ru/d/eC5ANvd8l-5g6g" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/></svg>Лицензия на образовательную деятельность</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Билеты на кинопоказы</h3>
+        <p style="margin-bottom:20px;color:var(--ink-2)">Узнать расписание и купить билет можно по телефону или в мессенджерах.</p>
+        <a class="btn btn-primary" href="https://wa.me/79640618010" target="_blank" rel="noopener">Купить билет</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>АНО ПО «Академия кино и телевизионных искусств „Премьера-М“». ОКВЭД 59.11 — производство кинофильмов, видеофильмов и телевизионных программ.</p>
+    <p>ИНН 2014041650 · КПП 201401001<br>Директор — Мусаева Милана Абубакаровна<br><a href="textolite/" rel="nofollow">Вход для администратора</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var top=document.getElementById('top');
+  function onScroll(){top.classList.toggle('solid',window.scrollY>window.innerHeight*0.6)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+</body>
+</html>
